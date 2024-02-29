@@ -6,7 +6,6 @@ Some Features:
 -   🔑 Authentication && Authorization with Passport.js (Github Auth)
 -   👾 Fetch Github User Profiles and Repos
 -   🚀 Filter Repos on the Client
--   🎭 Learn behind the scenes for authentication.
 
 ## Setup .env file
 
