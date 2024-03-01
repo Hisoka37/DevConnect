@@ -1,3 +1,9 @@
+import ProfileInfo from "../components/ProfileInfo"
+import Repos from "../components/Repos"
+import Search from "../components/Search"
+import SortRepos from "../components/SortRepos"
+
+
 const HomePage = () => {
   return (
      <div className="m-4">
