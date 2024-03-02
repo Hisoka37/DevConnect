@@ -12,10 +12,8 @@ const SideBar = () => {
 
   return (
     <aside
-      className="flex flex-col items-center min-w-12 sm:w-16 sticky top-0 left-0 h-screen  py-8
-        overflow-y-auto border-r  w-full bg-gray-0 rounded-md bg-glass 
-        
-    "
+      className="flex flex-col items-center xl:w-10 sticky top-0 left-0 h-screen  py-8
+        overflow-y-auto border-r   bg-gray-0 rounded-md bg-glass  "
     >
         <nav className="h-full flex flex-col gap-3">
             <Link to= '/' className ="flex justify-center">
