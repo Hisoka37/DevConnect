@@ -3,7 +3,7 @@ import ProfileInfo from "../components/ProfileInfo"
 import Repos from "../components/Repos"
 import Search from "../components/Search"
 import SortRepos from "../components/SortRepos"
-import toast from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import Spinner from "../components/Spinner"
 
 
