@@ -6,7 +6,7 @@ const ExplorePage = () => {
             <div className="flex flex-wrap gap-2 my-2 justify-center">
               <img src="/javascript.svg" alt="JavaScript Logo" className="h-11 sm:h-28 cursor-pointer" />
               <img src="/python.svg" alt="Python Logo" className="h-11 sm:h-28 cursor-pointer" />
-              <img src="/ruby.png" alt="Ruby Logo" className="h-11 sm:h-28 cursor-pointer" />
+              <img src="/ruby.svg" alt="Ruby Logo" className="h-11 sm:h-28 cursor-pointer" />
               <img src="/c++.svg" alt="c++ Logo" className="h-11 sm:h-28 cursor-pointer" />
               <img src="/java.svg" alt="java Logo" className="h-11 sm:h-28 cursor-pointer" />
             </div>

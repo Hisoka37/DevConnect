@@ -4,6 +4,7 @@ import Repos from "../components/Repos"
 import Search from "../components/Search"
 import SortRepos from "../components/SortRepos"
 import toast from 'react-hot-toast';
+import Spinner from "../components/Spinner"
 
 
 const HomePage = () => {
@@ -19,11 +20,11 @@ const HomePage = () => {
         try {
           const userRes = await fetch('https://api.github.com/users/hisoka37')
           const userProfile = await userRes.json()
-          console.log(userProfile)
           setUserProfile(userProfile)
   
           const userRepos = await fetch(userProfile.repos_url)
           const repos = await userRepos.json()
+          console.log(repos)
           setRepos(repos)
      
         } catch (error) {
@@ -42,8 +43,9 @@ const HomePage = () => {
       <Search />
       <SortRepos />
         <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
-          <ProfileInfo  userProfile={userProfile}/>
-          <Repos />
+          { userProfile && !loading && <ProfileInfo  userProfile={userProfile}/>}
+          { repos.length > 0 && !loading && <Repos repos={repos} />}
+          {loading && <Spinner />}
         </div>
      </div>
   )
