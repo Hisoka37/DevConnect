@@ -19,6 +19,7 @@ const HomePage = () => {
         try {
           const userRes = await fetch('https://api.github.com/users/hisoka37')
           const userProfile = await userRes.json()
+          console.log(userProfile)
           setUserProfile(userProfile)
   
           const userRepos = await fetch(userProfile.repos_url)
@@ -41,7 +42,7 @@ const HomePage = () => {
       <Search />
       <SortRepos />
         <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
-          <ProfileInfo />
+          <ProfileInfo  userProfile={userProfile}/>
           <Repos />
         </div>
      </div>
