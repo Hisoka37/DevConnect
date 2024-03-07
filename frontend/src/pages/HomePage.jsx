@@ -15,17 +15,17 @@ const HomePage = () => {
 
 
   const getUserProfileAndRepos = useCallback(
-    async () => {
+    async (username = 'Hisoka37') => {
       setLoading(true)
         try {
-          const userRes = await fetch('https://api.github.com/users/hisoka37')
+          const userRes = await fetch(`https://api.github.com/users/${username}`)
           const userProfile = await userRes.json()
           setUserProfile(userProfile)
   
           const userRepos = await fetch(userProfile.repos_url)
           const repos = await userRepos.json()
-          console.log(repos)
           setRepos(repos)
+          return (userProfile, repos)
      
         } catch (error) {
           toast.error(error.message)
@@ -38,13 +38,24 @@ const HomePage = () => {
       getUserProfileAndRepos()
   }, [getUserProfileAndRepos])
 
+  const onSearch = async (e, username) => {
+      e.preventDefault()
+
+      setLoading(true);
+      setRepos([])
+      setUserProfile(null)
+
+      const {userProfile, repos} = await getUserProfileAndRepos(username)
+      setLoading(false)
+  }
+
   return (
      <div className="m-4">
-      <Search />
+      <Search onSearch={onSearch} />
       <SortRepos />
         <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
           { userProfile && !loading && <ProfileInfo  userProfile={userProfile}/>}
-          { repos.length > 0 && !loading && <Repos repos={repos} />}
+          { !loading && <Repos repos={repos}  />}
           {loading && <Spinner />}
         </div>
      </div>

@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { FaUserAstronaut  } from "react-icons/fa";
 
-const Search = () => {
+const Search = ({ onSearch }) => {
   const [username, setUsername] = useState("");
+
   return (
-    <form className="flex items-center max-w-xl mx-auto p-2 pb-4">
+    <form className="flex items-center max-w-xl mx-auto p-2 pb-4"
+      onSubmit={(e) =>  onSearch(e, username )}
+    >
       <label htmlFor="simple-search" className="sr-only">
         Search
       </label>
