@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { FaUserAstronaut  } from "react-icons/fa";
 
-const Search = () => {
+const Search = ({ onSearch }) => {
   const [username, setUsername] = useState("");
+
   return (
-    <form className="flex items-center max-w-xl mx-auto p-2 pb-4">
+    <form className="flex items-center max-w-xl mx-auto p-2 pb-4"
+      onSubmit={(e) =>  onSearch(e, username )}
+    >
       <label htmlFor="simple-search" className="sr-only">
         Search
       </label>
@@ -44,7 +47,7 @@ const Search = () => {
             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
           />
         </svg>
-        <span className="sr-only">Search</span>
+        {/* <span className="sr-only"></span> */}
       </button>
     </form>
   );

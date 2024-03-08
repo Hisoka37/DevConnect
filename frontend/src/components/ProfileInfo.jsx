@@ -3,23 +3,11 @@ import { TfiThought } from "react-icons/tfi";
 import { FaLocationCrosshairs, FaXTwitter } from "react-icons/fa6";
 import { RiGitRepositoryFill } from "react-icons/ri";
 import { SlUserFollow, SlUserFollowing  } from "react-icons/sl"
+import { formatMemberSince } from "../utils/timeFormat";
 
-const ProfileInfo = () => {
-    const userProfile = {
-		avatar_url: "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
-		bio: "The best mern dev in the moon",
-		email: "walidkabou@gmail.com",
-		followers: 100,
-		following: 200,
-		html_url: "https://github.com/hisoka37",
-		location: "The Moon",
-		name: "Walid Kabboussa",
-		public_gists: 100,
-		public_repos: 100,
-		twitter_username: "kb9w",
-		login: "hisoka",
-	};
 
+const ProfileInfo = ({userProfile}) => {
+	const memeberSince = formatMemberSince(userProfile?.created_at)
   return (
     <div className="lg:w-1/3 w-full flex flex-col gap-2 md:sticky md:top-10">
         <div className="bg-glass rounded-lg p-4">
@@ -43,9 +31,9 @@ const ProfileInfo = () => {
 
             {/* User Bio  */}
             {userProfile?.bio ? (
-                <div className="flex items-center gap-2">
-                    <TfiThought />
-                    <p className="text-sm"> {userProfile?.bio.substring(0, 60)}...</p>
+                <div className="flex gap-2">
+                    <TfiThought size={30} />
+                    <p className="text-sm"> {userProfile?.bio.substring(0, 100)}...</p>
                 </div>
             ) : null}
 
@@ -69,6 +57,7 @@ const ProfileInfo = () => {
 						{userProfile?.twitter_username}
 					</a>
 				) : null}
+				
 
                 {/* Full Name */}
 				{userProfile?.name && (
@@ -91,6 +80,14 @@ const ProfileInfo = () => {
 					<p className='text-gray-600 font-bold text-sm'>Username</p>
 					<p className=''>{userProfile?.login}</p>
 				</div>
+
+				{/* Member sicne :  */}
+				{userProfile?.created_at && (
+					<div className='my-2'>
+						<p className='text-gray-600 font-bold text-sm'>Member Since</p>
+						<p className=''>{memeberSince}</p>
+					</div>
+				)}
         </div>
         <div className='flex flex-wrap gap-2 mx-4'>
 				{/* Followers Count */}
