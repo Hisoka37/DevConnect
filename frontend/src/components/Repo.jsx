@@ -26,7 +26,7 @@ const Repo = ({repo}) => {
 			</span>
 			<div className='flex gap-2 items-center flex-wrap'>
 				<a
-					href={"repo.html_url"}
+					href={repo.html_url}
 					target='_blank'
 					rel='noreferrer'
 					className='flex items-center gap-2 text-lg font-semibold'
