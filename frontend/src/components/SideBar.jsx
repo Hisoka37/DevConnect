@@ -5,10 +5,12 @@ import { IoIosCreate } from "react-icons/io"
 import { FcLike } from "react-icons/fc";
 import { MdExplore } from "react-icons/md";
 import Logout from "./Logout";
+import { useAuthContext } from "../context/auth";
+
 
 
 const SideBar = () => {
-    const authUser = true;
+    const {authUser} = useAuthContext()
 
   return (
     <aside
@@ -25,7 +27,7 @@ const SideBar = () => {
                 <IoHome  size ={20} />
             </Link>
 
-            {!authUser && (
+            {authUser && (
                 <Link to= '/likes' 
                 className =" p-2 flex justify-center  transition-colors duration-200 rounded-lg hover:bg-gray-800">
                 <FcLike  size ={20} />
@@ -37,13 +39,13 @@ const SideBar = () => {
                 <MdExplore  size ={20} alt="" />
             </Link>
             )}
-            {authUser && (
+            {!authUser && (
                 <Link to= '/login' 
                 className =" p-2 flex justify-center  transition-colors duration-200 rounded-lg hover:bg-gray-800">
                 <IoLogIn  size ={20} />
             </Link>
             )}
-            {authUser && (
+            {!authUser && (
                 <Link to= '/signup' 
                 className =" p-2 flex justify-center  transition-colors duration-200 rounded-lg hover:bg-gray-800">
                 <IoIosCreate    size ={20} />
