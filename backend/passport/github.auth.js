@@ -1,6 +1,7 @@
 import passport from "passport";
 import dotenv from 'dotenv';
 import { Strategy as GitHubStrategy } from "passport-github2";
+import User from '../models/user.model.js'
 
 dotenv.config()
 
@@ -21,7 +22,23 @@ passport.use(new GitHubStrategy({
 },
   async function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
-        console.log(profile);
+    const user = await User.findOne({username: profile.username})
+
+    if(!user) {
+        const newUser = new User({
+            name: profile.displayName,
+            username: profile.username,
+            profileUrl: profile.profileUrl,
+            avatarUrl: profile.photos[0].value,
+            likedProfiles:[],
+            likedBy:[]
+
+        })
+        await newUser.save()
+        done(null, newUser)
+    } else {
+        done(null, user)
+    }
 
   }
 ));
