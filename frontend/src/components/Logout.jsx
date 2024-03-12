@@ -1,7 +1,7 @@
 import { MdLogout } from "react-icons/md";
 import { useAuthContext } from "../context/auth";
 import toast from "react-hot-toast";
-
+import { Link } from "react-router-dom";
 
 
 const Logout = () => {
@@ -17,7 +17,9 @@ const Logout = () => {
   }
   return (
     <>
-        <img src={authUser?.avatarUrl} alt="" className="w-10 rounded-full border border-gray-800" />
+        <Link to='/'>
+         <img src={authUser?.avatarUrl} alt="" className="w-10 rounded-full border border-gray-800" />
+        </Link>
 
         <div to='/logout' className="cursor-pointer flex items-center p-2 transition-colors duration-200 bg-glass mt-auto rounded-lg hover:bg-gray-800"
         onClick={handleLogout}
