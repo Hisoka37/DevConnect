@@ -1,17 +1,39 @@
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FcLike } from "react-icons/fc";
+import { formatDate } from "../utils/timeFormat";
+
 
 const LikesPage = () => {
 
+
+
+	const [likes, setLikes] = useState([]);
+	// const likedDate = formatMemberSince(likes.likedDate)
+
+	useEffect(() => {
+		const getLikes = async() => {
+			try {
+				const res = await fetch('/api/users/likes',{credentials: "include"})
+				const data = await res.json()
+				if(data.error) throw Error(data.error)
+				setLikes(data.likedBy)
+			} catch (error) {
+				toast.error(error.message)
+			}
+		}
+		getLikes()
+	}, [])
 	return (
 		<div className='relative overflow-x-auto shadow-md rounded-lg px-4'>
 			<table className='w-full text-sm text-left rtl:text-right bg-glass overflow-hidden'>
 				<thead className='text-xs uppercase bg-glass'>
 					<tr>
-						<th scope='col' className='p-4'>
+						<th scope='col' className='px-6 py-3 '>
 							<div className='flex items-center'>No</div>
 						</th>
 						<th scope='col' className='px-6 py-3'>
-							Username
+							User
 						</th>
 						<th scope='col' className='px-6 py-3'>
 							Date
@@ -22,25 +44,27 @@ const LikesPage = () => {
 					</tr>
 				</thead>
 				<tbody>
-						<tr className='bg-glass border-b'>
-							<td className='w-4 p-4'>
-								<div className='flex items-center'>
-									<span>1</span>
-								</div>
-							</td>
-							<th scope='row' className='flex items-center px-6 py-4 whitespace-nowrap '>
-								<img className='w-10 h-10 rounded-full' src="../../public/javascript.svg"  alt='User Avatar' />
-								<div className='ps-3'>
-									<div className='text-base font-semibold'></div>
-								</div>
-							</th>
-							<td className='px-6 py-4'> 2020-08-29 </td>
-							<td className='px-6 py-4'>
-								<div className='flex items-center gap-1'>
-									<FcLike size={22} /> Liked your profile
-								</div>
-							</td>
-						</tr>
+				{likes.map((user, idx) => (
+					<tr className='bg-glass border-b' key={user.username}>
+						<td className='w-4 p-4'>
+							<div className='flex items-center'>
+								<span>{idx + 1}</span>
+							</div>
+						</td>
+						<th scope='row' className='flex items-center px-6 py-4 whitespace-nowrap '>
+							<img className='w-10 h-10 rounded-full' src={user.avatarUrl}  alt='User Avatar' />
+							<div className='ps-3'>
+								<div className='text-base font-semibold'>{user.username}</div>
+							</div>
+						</th>
+						<td className='px-6 py-4'> {formatDate(user.likedDate)} </td>
+						<td className='px-6 py-4'>
+							<div className='flex items-center gap-1'>
+								<FcLike size={22} /> Liked your profile
+							</div>
+						</td>
+					</tr>
+				))}
 				</tbody>
 			</table>
 		</div>

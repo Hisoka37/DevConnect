@@ -4,6 +4,7 @@ import { FaLocationCrosshairs, FaXTwitter } from "react-icons/fa6";
 import { RiGitRepositoryFill } from "react-icons/ri";
 import { SlUserFollow, SlUserFollowing  } from "react-icons/sl"
 import { formatMemberSince } from "../utils/timeFormat";
+import LikeProfile from "./LikeProfile";
 
 
 const ProfileInfo = ({userProfile}) => {
@@ -17,6 +18,7 @@ const ProfileInfo = ({userProfile}) => {
                     <img src={userProfile?.avatar_url}  className="rounded-md w-24 h-24 mb-2" />
                 </a>
                 <div className='flex gap-2 items-center flex-col'>
+				<LikeProfile userProfile={userProfile}/>
 						<a
 							href={userProfile?.html_url}
 							target='_blank'
