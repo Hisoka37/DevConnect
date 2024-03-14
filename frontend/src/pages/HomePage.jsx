@@ -5,28 +5,36 @@ import Search from "../components/Search";
 import SortRepos from "../components/SortRepos";
 import { toast } from "react-hot-toast";
 import Spinner from "../components/Spinner";
+import { useAuthContext } from "../context/auth";
 
 const HomePage = () => {
+  const {authUser} = useAuthContext()
+  console.log(authUser);
+
   const [userProfile, setUserProfile] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [sortType, setSortType] = useState("recent");
 
-  const getUserProfileAndRepos = useCallback(async (username = "Hisoka37") => {
+
+  const getUserProfileAndRepos = useCallback(async (username) => {
     setLoading(true);
+    
     try {
-     const res = await fetch(`/api/users/profile/${username}`)
-    const {repos, userProfile} = await res.json()
+      let fetchedUsername = username || (authUser && authUser.username) || 'Hisoka37';
+      const res = await fetch(`/api/users/profile/${fetchedUsername}`);
+      const { repos, userProfile } = await res.json();
       repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-      setUserProfile(userProfile)
+      setUserProfile(userProfile);
       setRepos(repos);
-      return { userProfile, repos }
+      return { userProfile, repos };
     } catch (error) {
       toast.error(error.message);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [authUser]);
+  
 
   useEffect(() => {
     getUserProfileAndRepos();
