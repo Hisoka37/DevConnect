@@ -29,3 +29,7 @@ npm run build
 ```shell
 npm start
 ```
+
+
+/ user should access his account on main page. 
+/ user should click on his avatar to access his profile. 
