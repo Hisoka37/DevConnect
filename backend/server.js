@@ -1,5 +1,5 @@
 import express from 'express';
-import userRoutes from './routes/User.route.js';
+import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import exploreRouter from './routes/explore.route.js';
 import dotenv from "dotenv"
