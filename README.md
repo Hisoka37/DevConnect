@@ -6,7 +6,6 @@ Some Features:
 -   🔑 Authentication && Authorization with Passport.js (Github Auth)
 -   👾 Fetch Github User Profiles and Repos
 -   🚀 Filter Repos on the Client
--   🎭 Learn behind the scenes for authentication.
 
 ## Setup .env file
 
@@ -30,3 +29,7 @@ npm run build
 ```shell
 npm start
 ```
+
+
+/ user should access his account on main page. 
+/ user should click on his avatar to access his profile. 
