@@ -3,7 +3,7 @@
 <details>
 <summary>📗Table of Contents</summary>
   
-- [🤖 GitHub MERN App](#about-project)
+- [🤖 DevConnect](#about-project)
   - [🛠 Built With](#built-with)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
@@ -18,9 +18,9 @@
 - [📝 License](#license)
 </details>
 
-# 🤖 GitHub MERN App <a name="about-project"></a>
+# 🤖 DevConnect <a name="about-project"></a>
 
-**GitHub MERN App** is a full-stack web application built with the MERN (MongoDB, Express.js, React.js, Node.js) stack. It provides users with the functionality to authenticate via GitHub, view GitHub user profiles, and fetch repositories using the GitHub API.
+**DevConnect** is a full-stack web application built with the MERN (MongoDB, Express.js, React.js, Node.js) stack. It provides users with the functionality to authenticate via GitHub, view GitHub user profiles, and fetch repositories using the GitHub API.
 
 ## 🛠 Built With <a name="built-with">
 <details>
@@ -50,7 +50,7 @@ In order to run this project, you need the following installed:
 
 Clone this repository to your desired folder:
 ```
-git clone https://github.com/Hisoka37/Github-Mern.git
+git clone https://github.com/Hisoka37/DevConnect.git
 ```
 
 ### Install
@@ -59,7 +59,7 @@ Install project dependencies:
 
 shellCopy code
 
-`cd Github-Mern
+`cdDevConnect
 npm install`
 
 ### Setup .env file
@@ -90,7 +90,7 @@ Start the application:
 🔭 Future Features <a name="future-features"></a>
 -------------------------------------------------
 
--   Add ability to search for repositories by keywords.
+-   Add the ability to search for repositories by keywords.
 -   Implement user authentication with email/password.
 -   Enhance user interface and user experience.
 
